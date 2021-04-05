@@ -9,9 +9,11 @@
   },
   "dependencies": {
     "@geist-ui/react": "^2.1.4",
+    "message-choice": "^0.0.0-alpha.7",
     "next": "10.0.8",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "use-arconnect": "^1.0.1"
   },
   "devDependencies": {
     "@types/node": "^14.14.34",
