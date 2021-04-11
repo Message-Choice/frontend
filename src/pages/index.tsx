@@ -1,4 +1,4 @@
-import {Button, ButtonGroup, Col, Row, Text, Textarea} from "@geist-ui/react"
+import {Button, Text, Textarea} from "@geist-ui/react"
 
 const Home = () => {
 

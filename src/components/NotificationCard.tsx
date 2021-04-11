@@ -1,13 +1,14 @@
 import {Avatar, Card, Image, Text,} from "@geist-ui/react";
 
-const NotificationCard = () => {
-  const url = "https://user-images.githubusercontent.com/11304944/76085431-fd036480-5fec-11ea-8412-9e581425344a.png"
-  const thumbnail = "https://user-images.githubusercontent.com/11304944/76085431-fd036480-5fec-11ea-8412-9e581425344a.png"
-  const headline = "Origins Development Was Bogged Down with Inconsistent Blockchain State And RPC Errors"
+const NotificationCard = ({props}) => {
+  const url = props.data.url
+  const thumbnail = props.data.thumbnail
+  const headline = props.data.headline
 
+  // todo get from verto id
   const avatar = "https://user-images.githubusercontent.com/11304944/76085431-fd036480-5fec-11ea-8412-9e581425344a.png"
-  const username = "The Alchemy Team"
-  const date = "Apr 27, 2020"
+  const username = props.from
+  const date = props.timestamp
 
   return (
     <>

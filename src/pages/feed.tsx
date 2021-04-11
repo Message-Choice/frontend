@@ -34,11 +34,7 @@ const Feed = () => {
   useEffect(() => {
     if (!addr) return;
     else {
-      feed("s-hGrOFm1YysWGC3wXkNaFVpyrjdinVpRKiVnhbo2so").then(f => {
-        console.log(f)
-          setMyFeed(f)
-        }
-      )
+      loadNotificationFeed(addr)
     }
 
   }, [addr])
@@ -63,6 +59,20 @@ const Feed = () => {
     }
   };
 
+  const loadNotificationFeed = async (address) => {
+    const f = []
+    const full = await feed(address)
+    console.log(full)
+    for (let item of full) {
+      try {
+        item.data = JSON.parse(item.data)
+        f.push(item)
+      } catch (e) {
+
+      }
+    }
+    setMyFeed(f);
+  }
 
   return (
     <>
@@ -78,7 +88,7 @@ const Feed = () => {
       {
         myFeed.map((f) => {
           return (
-            <NotificationCard/>
+            <NotificationCard props={f} />
           )
         })
       }
