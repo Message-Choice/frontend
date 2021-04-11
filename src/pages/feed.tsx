@@ -1,8 +1,9 @@
 import NotificationCard from "../components/NotificationCard";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {Button, Text, useToasts} from "@geist-ui/react";
 import useArConnect from "use-arconnect";
 import {feed, subscribe} from "message-choice";
+import CreateNotificationInput from "../components/CreateNotificationInput";
 
 const arConnectPermissions = [
   "ACCESS_ADDRESS",
@@ -12,6 +13,8 @@ const arConnectPermissions = [
 
 
 const Feed = () => {
+
+  const createNotificationModalRef = useRef();
 
   const [addr, setAddr] = useState("");
   const [myFeed, setMyFeed] = useState([]);
@@ -92,6 +95,14 @@ const Feed = () => {
           )
         })
       }
+      <Button
+        type="success-light"
+        // @ts-ignore
+        onClick={() => createNotificationModalRef.current.open()}
+      >
+        Create Notification
+      </Button>
+      <CreateNotificationInput ref={createNotificationModalRef}/>
     </>
   )
 
