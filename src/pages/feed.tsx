@@ -1,9 +1,11 @@
 import NotificationCard from "../components/NotificationCard";
 import {useEffect, useRef, useState} from "react";
-import {Button, Text, useToasts} from "@geist-ui/react";
+import {Button, Text, useToasts, Grid, Tooltip, Row, Page, Avatar, Col, Spacer} from "@geist-ui/react";
 import useArConnect from "use-arconnect";
 import {feed, subscribe} from "message-choice";
 import CreateNotificationInput from "../components/CreateNotificationInput";
+import User from "../components/User";
+import {fetchIdentity} from "../utils/identity";
 
 const arConnectPermissions = [
   "ACCESS_ADDRESS",
@@ -18,6 +20,7 @@ const Feed = () => {
 
   const [addr, setAddr] = useState("");
   const [myFeed, setMyFeed] = useState([]);
+  const [identity, setIdentity] = useState({});
   const [, setToast] = useToasts();
 
   const arConnect = useArConnect();
@@ -38,6 +41,9 @@ const Feed = () => {
     if (!addr) return;
     else {
       loadNotificationFeed(addr)
+      fetchIdentity(addr).then((res) => {
+        setIdentity(res)
+      })
     }
 
   }, [addr])
@@ -79,29 +85,49 @@ const Feed = () => {
 
   return (
     <>
-      <Text onClick={connectWallet} style={{cursor: "pointer"}}>
-        {(arConnect && (addr === "" ? "Log In" : "Logout")) ||
-        "Install ArConnect"}
-      </Text>
-      <Text>{addr}</Text>
-      <Button onClick={async () => {
-        const txId = await subscribe("s-hGrOFm1YysWGC3wXkNaFVpyrjdinVpRKiVnhbo2so")
-        console.log(txId)
-      }}>Subscribe</Button>
-      {
-        myFeed.map((f) => {
-          return (
-            <NotificationCard props={f}/>
-          )
-        })
-      }
-      <Button
-        type="success-light"
-        // @ts-ignore
-        onClick={() => createNotificationModalRef.current.open()}
-      >
-        Create Notification
-      </Button>
+      <Page size={"large"} dotBackdrop={true}>
+        <Page.Header>
+          <Row justify="space-between" align="middle">
+            <Button
+              type="success-light"
+              // @ts-ignore
+              onClick={() => createNotificationModalRef.current.open()}
+            >
+              Create Notification
+            </Button>
+            <Tooltip
+              text={
+                <p style={{margin: 0, textAlign: "center"}}>
+                  Click here to {addr === "" ? "login" : "logout"}
+                </p>
+              }
+              placement="bottom"
+            >
+              <Text onClick={connectWallet} style={{cursor: "pointer"}}>
+                {(arConnect && (addr === "" ? "Log In" : "Logout")) ||
+                "Install ArConnect"}
+              </Text>
+            </Tooltip>
+          </Row>
+        </Page.Header>
+        <Page.Content>
+          <Row justify={"center"}>
+            <User {...identity}/>
+          </Row>
+          <Spacer y={2}/>
+          <Grid.Container gap={2} justify="center">
+            {
+              myFeed.map((f) => {
+                return (
+                  <Grid>
+                    <NotificationCard props={f}/>
+                  </Grid>
+                )
+              })
+            }
+          </Grid.Container>
+        </Page.Content>
+      </Page>
       <CreateNotificationInput ref={createNotificationModalRef}/>
     </>
   )

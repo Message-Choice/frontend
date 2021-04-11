@@ -1,4 +1,5 @@
-import {Avatar, Card, Image, Text,} from "@geist-ui/react";
+import {Avatar, Card, Col, Image, Row, Text,} from "@geist-ui/react";
+import {truncate} from "../utils/truncate";
 
 const NotificationCard = ({props}) => {
   const url = props.data.url
@@ -12,7 +13,7 @@ const NotificationCard = ({props}) => {
 
   return (
     <>
-      <Card width="400px">
+      <Card width="300px">
         <Image
           style={{cursor: "pointer", objectFit: 'cover'}}
           onClick={() => {
@@ -22,10 +23,15 @@ const NotificationCard = ({props}) => {
           height={200} width={400}/>
         <Text h4 style={{marginBottom: '0'}}>{headline}</Text>
         <Card.Footer>
-          <Avatar src={avatar} size="small"/>
-          <Text style={{width: "100%"}} type={"secondary"} span> {username}
-            <Text style={{textAlign: "right", width: "100%"}} span>{date}</Text>
-          </Text>
+          <Row align={"middle"}>
+            <span>
+              <Avatar src={avatar} size="small"/>
+              <Text type={"secondary"}> {truncate(username)}</Text>
+            </span>
+            <Row justify={"end"}>
+              <Text span>{date}</Text>
+            </Row>
+          </Row>
         </Card.Footer>
       </Card>
     </>
