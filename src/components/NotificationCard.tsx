@@ -12,12 +12,14 @@ const NotificationCard = ({props}) => {
 
   return (
     <>
-      <Card width="400px" style={{cursor: "pointer"}} onClick={() => {
-        window.open(url, '_ blank');
-      }}>
+      <Card width="400px">
         <Image
+          style={{cursor: "pointer", objectFit: 'cover'}}
+          onClick={() => {
+            window.open(url, '_blank');
+          }}
           src={thumbnail}
-          height={200} width={400} style={{objectFit: 'cover'}}/>
+          height={200} width={400}/>
         <Text h4 style={{marginBottom: '0'}}>{headline}</Text>
         <Card.Footer>
           <Avatar src={avatar} size="small"/>

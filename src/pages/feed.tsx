@@ -91,7 +91,7 @@ const Feed = () => {
       {
         myFeed.map((f) => {
           return (
-            <NotificationCard props={f} />
+            <NotificationCard props={f}/>
           )
         })
       }

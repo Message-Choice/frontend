@@ -1,5 +1,6 @@
 import {Input, Modal, useInput, useModal} from "@geist-ui/react";
 import {forwardRef, useImperativeHandle} from "react";
+import {publish} from "message-choice";
 
 const CreateNotificationInput = forwardRef((props, ref) => {
 
@@ -22,7 +23,7 @@ const CreateNotificationInput = forwardRef((props, ref) => {
       url: urlInput,
       thumbnail: thumbnailInput,
     }
-
+    await publish(Buffer.from(JSON.stringify(data)))
   }
 
 
