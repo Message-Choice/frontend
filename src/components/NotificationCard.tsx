@@ -1,7 +1,11 @@
 import {Avatar, Card, Col, Image, Row, Text,} from "@geist-ui/react";
 import {truncate} from "../utils/truncate";
+import {useRouter} from "next/router";
 
 const NotificationCard = ({props}) => {
+
+  const router = useRouter()
+
   const url = props.data.url
   const thumbnail = props.data.thumbnail
   const headline = props.data.headline
@@ -26,7 +30,9 @@ const NotificationCard = ({props}) => {
           <Row align={"middle"}>
             <span>
               <Avatar src={avatar} size="small"/>
-              <Text type={"secondary"}> {truncate(username)}</Text>
+              <Text type={"secondary"} style={{cursor: "pointer"}} onClick={() => {
+                router.push(`/feed/${username}`)
+              }}> {truncate(username)}</Text>
             </span>
             <Row justify={"end"}>
               <Text span>{date}</Text>

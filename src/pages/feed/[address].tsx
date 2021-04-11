@@ -1,11 +1,11 @@
-import NotificationCard from "../components/NotificationCard";
+import NotificationCard from "../../components/NotificationCard";
 import {useEffect, useRef, useState} from "react";
-import {Button, Text, useToasts, Grid, Tooltip, Row, Page, Avatar, Col, Spacer} from "@geist-ui/react";
+import {Button, Grid, Page, Row, Spacer, Text, Tooltip, useToasts} from "@geist-ui/react";
 import useArConnect from "use-arconnect";
-import {feed, subscribe} from "message-choice";
-import CreateNotificationInput from "../components/CreateNotificationInput";
-import User from "../components/User";
-import {fetchIdentity} from "../utils/identity";
+import {feed} from "message-choice";
+import CreateNotificationInput from "../../components/CreateNotificationInput";
+import User from "../../components/User";
+import {fetchIdentity} from "../../utils/identity";
 
 const arConnectPermissions = [
   "ACCESS_ADDRESS",
@@ -14,7 +14,7 @@ const arConnectPermissions = [
 ];
 
 
-const Feed = () => {
+const Index = () => {
 
   const createNotificationModalRef = useRef();
 
@@ -134,4 +134,4 @@ const Feed = () => {
 
 }
 
-export default Feed
+export default Index;
