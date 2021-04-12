@@ -32,9 +32,9 @@ const CreateNotificationInput = forwardRef((props, ref) => {
       <Modal {...bindings}>
         <Modal.Title>Create new notification</Modal.Title>
         <Modal.Content>
-          <Input {...headlineBindings} required>Headline</Input>
-          <Input {...urlBindings} required>URL</Input>
-          <Input {...thumbnailBindings} required>Thumbnail</Input>
+          <Input {...headlineBindings} required width={"100%"}>Headline</Input>
+          <Input {...urlBindings} required width={"100%"}>URL</Input>
+          <Input {...thumbnailBindings} required width={"100%"}>Thumbnail</Input>
         </Modal.Content>
         <Modal.Action passive onClick={() => setVisible(false)}>
           Cancel

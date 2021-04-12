@@ -6,6 +6,7 @@ import {feed} from "message-choice";
 import CreateNotificationInput from "../../components/CreateNotificationInput";
 import User from "../../components/User";
 import {fetchIdentity} from "../../utils/identity";
+import {router} from "next/client";
 
 const arConnectPermissions = [
   "ACCESS_ADDRESS",
@@ -18,24 +19,12 @@ const Index = () => {
 
   const createNotificationModalRef = useRef();
 
-  const [addr, setAddr] = useState("");
+  const addr = router.query.address as string
   const [myFeed, setMyFeed] = useState([]);
   const [identity, setIdentity] = useState({});
   const [, setToast] = useToasts();
 
   const arConnect = useArConnect();
-
-  useEffect(() => {
-    if (!arConnect) return;
-    (async () => {
-      try {
-        if ((await arConnect.getPermissions()).includes("ACCESS_ADDRESS")) {
-          setAddr(await arConnect.getActiveAddress());
-        }
-      } catch {
-      }
-    })();
-  }, [arConnect]);
 
   useEffect(() => {
     if (!addr) return;
@@ -47,26 +36,6 @@ const Index = () => {
     }
 
   }, [addr])
-
-  const connectWallet = async () => {
-    if (!arConnect) return window.open("https://arconnect.io");
-    // logout
-    if (addr !== "") {
-      await arConnect.disconnect();
-      setAddr("");
-    } else {
-      // login
-      try {
-        await arConnect.connect(arConnectPermissions);
-        setAddr(await arConnect.getActiveAddress());
-        window.addEventListener("walletSwitch", (e: any) =>
-          setAddr(e.detail.address)
-        );
-      } catch {
-        setToast({text: "Could not connect to ArConnect", type: "error"});
-      }
-    }
-  };
 
   const loadNotificationFeed = async (address) => {
     const f = []
@@ -103,7 +72,7 @@ const Index = () => {
               }
               placement="bottom"
             >
-              <Text onClick={connectWallet} style={{cursor: "pointer"}}>
+              <Text  style={{cursor: "pointer"}}>
                 {(arConnect && (addr === "" ? "Log In" : "Logout")) ||
                 "Install ArConnect"}
               </Text>
@@ -124,6 +93,9 @@ const Index = () => {
                   </Grid>
                 )
               })
+            }
+            {
+              myFeed.length === 0 ? <Text>No notifications found</Text> : undefined
             }
           </Grid.Container>
         </Page.Content>

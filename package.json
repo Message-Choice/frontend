@@ -10,6 +10,7 @@
   "dependencies": {
     "@geist-ui/react": "^2.1.4",
     "message-choice": "^0.0.0-alpha.9",
+    "moment": "^2.29.1",
     "next": "10.0.8",
     "react": "17.0.1",
     "react-dom": "17.0.1",

@@ -1,6 +1,7 @@
 import {Avatar, Card, Col, Image, Row, Text,} from "@geist-ui/react";
 import {truncate} from "../utils/truncate";
 import {useRouter} from "next/router";
+import moment from "moment";
 
 const NotificationCard = ({props}) => {
 
@@ -13,7 +14,7 @@ const NotificationCard = ({props}) => {
   // todo get from verto id
   const avatar = "https://user-images.githubusercontent.com/11304944/76085431-fd036480-5fec-11ea-8412-9e581425344a.png"
   const username = props.from
-  const date = props.timestamp
+  const date = moment.unix(props.timestamp).format("MM/DD/YYYY");
 
   return (
     <>
@@ -25,7 +26,11 @@ const NotificationCard = ({props}) => {
           }}
           src={thumbnail}
           height={200} width={400}/>
-        <Text h4 style={{marginBottom: '0'}}>{headline}</Text>
+        <Text h4
+              style={{cursor: "pointer", marginBottom: '0'}}
+              onClick={() => {
+                window.open(url, '_blank');
+              }}>{headline}</Text>
         <Card.Footer>
           <Row align={"middle"}>
             <span>

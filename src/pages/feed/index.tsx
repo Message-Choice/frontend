@@ -112,7 +112,7 @@ const Index = () => {
         </Page.Header>
         <Page.Content>
           <Row justify={"center"}>
-            <User {...identity}/>
+            <Text h3> Recent Notifications</Text>
           </Row>
           <Spacer y={2}/>
           <Grid.Container gap={2} justify="center">

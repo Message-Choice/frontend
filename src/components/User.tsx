@@ -14,7 +14,7 @@ const User = (props) => {
       />
       <div className="names">
         <Text h3 style={{marginTop: 0, marginBottom: 0}}>
-          {props.hasName ? props.name : truncate(props.address)}
+          {props.hasIdentity ? props.name : truncate(props.address)}
         </Text>
         <Button type="secondary" size={"small"} style={{marginTop: 0, marginBottom: 0}} onClick={async () => {
           const txId = await subscribe(props.address)
