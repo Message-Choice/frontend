@@ -1,4 +1,4 @@
-import {Avatar, Card, Col, Image, Row, Text,} from "@geist-ui/react";
+import {Avatar, Card, Image, Row, Text,} from "@geist-ui/react";
 import {truncate} from "../utils/truncate";
 import {useRouter} from "next/router";
 import moment from "moment";

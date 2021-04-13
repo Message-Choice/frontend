@@ -1,8 +1,7 @@
-import {Grid, Page, Text} from "@geist-ui/react";
+import {Grid, Text} from "@geist-ui/react";
 import NotificationCard from "./NotificationCard";
 import {feed} from "message-choice";
 import {useEffect, useState} from "react";
-import {fetchIdentity} from "../utils/identity";
 
 const Feed = (props) => {
 

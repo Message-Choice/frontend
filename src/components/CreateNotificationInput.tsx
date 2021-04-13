@@ -6,9 +6,9 @@ const CreateNotificationInput = forwardRef((props, ref) => {
 
   const {setVisible, bindings} = useModal();
 
-  const { state: headlineInput, bindings: headlineBindings } = useInput('')
-  const { state: urlInput, bindings: urlBindings } = useInput('')
-  const { state: thumbnailInput, bindings: thumbnailBindings } = useInput('')
+  const {state: headlineInput, bindings: headlineBindings} = useInput('')
+  const {state: urlInput, bindings: urlBindings} = useInput('')
+  const {state: thumbnailInput, bindings: thumbnailBindings} = useInput('')
 
   useImperativeHandle(ref, () => ({
     open() {
