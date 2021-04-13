@@ -7,6 +7,7 @@ import CreateNotificationInput from "../../components/CreateNotificationInput";
 import User from "../../components/User";
 import {fetchIdentity} from "../../utils/identity";
 import {router} from "next/client";
+import Feed from "../../components/Feed";
 
 const arConnectPermissions = [
   "ACCESS_ADDRESS",
@@ -72,7 +73,7 @@ const Index = () => {
               }
               placement="bottom"
             >
-              <Text  style={{cursor: "pointer"}}>
+              <Text style={{cursor: "pointer"}}>
                 {(arConnect && (addr === "" ? "Log In" : "Logout")) ||
                 "Install ArConnect"}
               </Text>
@@ -84,20 +85,7 @@ const Index = () => {
             <User {...identity}/>
           </Row>
           <Spacer y={2}/>
-          <Grid.Container gap={2} justify="center">
-            {
-              myFeed.map((f) => {
-                return (
-                  <Grid>
-                    <NotificationCard props={f}/>
-                  </Grid>
-                )
-              })
-            }
-            {
-              myFeed.length === 0 ? <Text>No notifications found</Text> : undefined
-            }
-          </Grid.Container>
+          <Feed {...{addr}}/>
         </Page.Content>
       </Page>
       <CreateNotificationInput ref={createNotificationModalRef}/>

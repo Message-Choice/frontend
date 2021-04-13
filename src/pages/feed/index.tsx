@@ -1,11 +1,8 @@
-import NotificationCard from "../../components/NotificationCard";
 import {useEffect, useRef, useState} from "react";
-import {Button, Grid, Page, Row, Spacer, Text, Tooltip, useToasts} from "@geist-ui/react";
+import {Button, Page, Row, Spacer, Text, Tooltip, useToasts} from "@geist-ui/react";
 import useArConnect from "use-arconnect";
-import {feed} from "message-choice";
 import CreateNotificationInput from "../../components/CreateNotificationInput";
-import User from "../../components/User";
-import {fetchIdentity} from "../../utils/identity";
+import Feed from "../../components/Feed";
 
 const arConnectPermissions = [
   "ACCESS_ADDRESS",
@@ -19,8 +16,6 @@ const Index = () => {
   const createNotificationModalRef = useRef();
 
   const [addr, setAddr] = useState("");
-  const [myFeed, setMyFeed] = useState([]);
-  const [identity, setIdentity] = useState({});
   const [, setToast] = useToasts();
 
   const arConnect = useArConnect();
@@ -36,17 +31,6 @@ const Index = () => {
       }
     })();
   }, [arConnect]);
-
-  useEffect(() => {
-    if (!addr) return;
-    else {
-      loadNotificationFeed(addr)
-      fetchIdentity(addr).then((res) => {
-        setIdentity(res)
-      })
-    }
-
-  }, [addr])
 
   const connectWallet = async () => {
     if (!arConnect) return window.open("https://arconnect.io");
@@ -68,20 +52,6 @@ const Index = () => {
     }
   };
 
-  const loadNotificationFeed = async (address) => {
-    const f = []
-    const full = await feed(address)
-    console.log(full)
-    for (let item of full) {
-      try {
-        item.data = JSON.parse(item.data)
-        f.push(item)
-      } catch (e) {
-
-      }
-    }
-    setMyFeed(f);
-  }
 
   return (
     <>
@@ -115,17 +85,7 @@ const Index = () => {
             <Text h3> Recent Notifications</Text>
           </Row>
           <Spacer y={2}/>
-          <Grid.Container gap={2} justify="center">
-            {
-              myFeed.map((f) => {
-                return (
-                  <Grid>
-                    <NotificationCard props={f}/>
-                  </Grid>
-                )
-              })
-            }
-          </Grid.Container>
+          <Feed {...{addr}}/>
         </Page.Content>
       </Page>
       <CreateNotificationInput ref={createNotificationModalRef}/>
