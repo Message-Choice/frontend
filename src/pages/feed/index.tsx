@@ -3,6 +3,7 @@ import {Button, Page, Row, Spacer, Text, Tooltip, useToasts} from "@geist-ui/rea
 import useArConnect from "use-arconnect";
 import CreateNotificationInput from "../../components/CreateNotificationInput";
 import Feed from "../../components/Feed";
+import {subscriptions} from "message-choice";
 
 const arConnectPermissions = [
   "ACCESS_ADDRESS",
@@ -16,9 +17,25 @@ const Index = () => {
   const createNotificationModalRef = useRef();
 
   const [addr, setAddr] = useState("");
+  const [mySubscriptions, setMySubscriptions] = useState([]);
   const [, setToast] = useToasts();
 
   const arConnect = useArConnect();
+
+  // load subscriptions
+  useEffect(() => {
+    if (!addr) return;
+    else {
+      subscriptions(addr).then((s) => {
+        // add own addr because you want to see own content
+        console.log(s)
+        s.push(addr)
+        console.log(s)
+        setMySubscriptions(s)
+      })
+    }
+
+  }, [addr])
 
   useEffect(() => {
     if (!arConnect) return;
@@ -85,7 +102,7 @@ const Index = () => {
             <Text h3> Recent Notifications</Text>
           </Row>
           <Spacer y={2}/>
-          <Feed {...{addr}}/>
+          <Feed {...{addr: mySubscriptions}}/>
         </Page.Content>
       </Page>
       <CreateNotificationInput ref={createNotificationModalRef}/>

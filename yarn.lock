@@ -932,10 +932,10 @@ merge-stream@^2.0.0:
   resolved "https://registry.yarnpkg.com/merge-stream/-/merge-stream-2.0.0.tgz#52823629a14dd00c9770fb6ad47dc6310f2c1f60"
   integrity sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==
 
-message-choice@^0.0.0-alpha.9:
-  version "0.0.0-alpha.9"
-  resolved "https://registry.yarnpkg.com/message-choice/-/message-choice-0.0.0-alpha.9.tgz#c1226195ce6791f3a8a339a329316ab745bf1ad1"
-  integrity sha512-rfHzbn9jGcIcp2BFISzJiEpJaEYsqBqL5v129IFXaHyFeKGxor5dWzQQzkAbvw5nPEAQK+mCEA+0quZSwNJP0g==
+message-choice@^0.0.0-alpha.10:
+  version "0.0.0-alpha.10"
+  resolved "https://registry.yarnpkg.com/message-choice/-/message-choice-0.0.0-alpha.10.tgz#8bf30bd82dd1694cf11206e3eac1e533db6affa9"
+  integrity sha512-vaoY2TUDZArx7umpFeHqw8XSKF0JwlBcY+becAsxyaTso8MvXhLvyRFySgyxATgDG2My7yYM1eceN5uTZ77nxA==
   dependencies:
     ardb "^1.0.5"
     arweave "^1.10.13"

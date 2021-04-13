@@ -20,14 +20,14 @@ const NotificationCard = ({props}) => {
     <>
       <Card width="300px">
         <Image
-          style={{cursor: "pointer", objectFit: 'cover'}}
+          style={{cursor: "pointer", objectFit: 'cover', minHeight: "200px", maxHeight: "200px"}}
           onClick={() => {
             window.open(url, '_blank');
           }}
           src={thumbnail}
           height={200} width={400}/>
         <Text h4
-              style={{cursor: "pointer", marginBottom: '0'}}
+              style={{cursor: "pointer", marginBottom: '0', minHeight: "100px", maxHeight: "100px"}}
               onClick={() => {
                 window.open(url, '_blank');
               }}>{headline}</Text>

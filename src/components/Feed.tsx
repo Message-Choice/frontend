@@ -9,6 +9,7 @@ const Feed = (props) => {
   const [notifications, setMyNotifications] = useState([]);
 
   const loadNotificationFeed = async (address) => {
+    console.log("Loading")
     const f = []
     const full = await feed(address)
     console.log(full)
@@ -24,12 +25,14 @@ const Feed = (props) => {
   }
 
   useEffect(() => {
+    console.log("HERE")
     if (!props.addr) return;
     else {
+      console.log("I am here")
       loadNotificationFeed(props.addr)
     }
 
-  }, [props.addr])
+  }, [JSON.stringify(props.addr)])
 
   return (
     <Grid.Container gap={2} justify="center">
