@@ -4,10 +4,12 @@ import useArConnect from "use-arconnect";
 import CreateNotificationInput from "../../components/CreateNotificationInput";
 import User from "../../components/User";
 import {fetchIdentity} from "../../utils/identity";
-import {router} from "next/client";
+import {useRouter} from "next/router";
 import Feed from "../../components/Feed";
 
-const Index = () => {
+const Address = () => {
+
+  const router = useRouter();
 
   const createNotificationModalRef = useRef();
 
@@ -67,4 +69,4 @@ const Index = () => {
 
 }
 
-export default Index;
+export default Address;
