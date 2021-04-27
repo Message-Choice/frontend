@@ -1,6 +1,6 @@
 import {Input, Modal, useInput, useModal} from "@geist-ui/react";
 import {forwardRef, useImperativeHandle} from "react";
-import {publish} from "message-choice";
+import {publish} from "@fabric-dao/lib";
 
 const CreateNotificationInput = forwardRef((props, ref) => {
 

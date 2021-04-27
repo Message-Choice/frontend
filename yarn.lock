@@ -39,6 +39,15 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@fabric-dao/lib@^0.0.0-alpha.1":
+  version "0.0.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/@fabric-dao/lib/-/lib-0.0.0-alpha.1.tgz#8bd588da03e8f7ad068c1244ac78c4c2534e8b1d"
+  integrity sha512-HLgnHrHX45KkqiLSWSrSW2Hoql0N2GcJFmpofqDKj9KfGXZfNhj+ljD4ohw4J+qssCXss5m+nNSk0KlQPvUZjg==
+  dependencies:
+    ardb "^1.0.5"
+    arweave "^1.10.13"
+    file-type "^16.3.0"
+
 "@geist-ui/react@^2.1.4":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@geist-ui/react/-/react-2.1.5.tgz#26532eb1869a97c60c36a3860cba184bdab59f55"
@@ -931,15 +940,6 @@ merge-stream@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/merge-stream/-/merge-stream-2.0.0.tgz#52823629a14dd00c9770fb6ad47dc6310f2c1f60"
   integrity sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==
-
-message-choice@^0.0.0-alpha.10:
-  version "0.0.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/message-choice/-/message-choice-0.0.0-alpha.10.tgz#8bf30bd82dd1694cf11206e3eac1e533db6affa9"
-  integrity sha512-vaoY2TUDZArx7umpFeHqw8XSKF0JwlBcY+becAsxyaTso8MvXhLvyRFySgyxATgDG2My7yYM1eceN5uTZ77nxA==
-  dependencies:
-    ardb "^1.0.5"
-    arweave "^1.10.13"
-    file-type "^16.3.0"
 
 miller-rabin@^4.0.0:
   version "4.0.1"

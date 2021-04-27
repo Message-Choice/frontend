@@ -9,8 +9,8 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
+    "@fabric-dao/lib": "^0.0.0-alpha.1",
     "@geist-ui/react": "^2.1.4",
-    "message-choice": "^0.0.0-alpha.10",
     "moment": "^2.29.1",
     "next": "10.0.8",
     "react": "17.0.1",

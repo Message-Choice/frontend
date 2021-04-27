@@ -3,7 +3,7 @@ import {Button, Page, Row, Spacer, Text, Tooltip, useToasts} from "@geist-ui/rea
 import useArConnect from "use-arconnect";
 import CreateNotificationInput from "../../components/CreateNotificationInput";
 import Feed from "../../components/Feed";
-import {subscriptions} from "message-choice";
+import {subscriptions} from "@fabric-dao/lib";
 
 const arConnectPermissions = [
   "ACCESS_ADDRESS",

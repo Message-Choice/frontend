@@ -1,6 +1,6 @@
 import {Grid, Text} from "@geist-ui/react";
 import NotificationCard from "./NotificationCard";
-import {feed} from "message-choice";
+import {feed} from "@fabric-dao/lib";
 import {useEffect, useState} from "react";
 
 const Feed = (props) => {

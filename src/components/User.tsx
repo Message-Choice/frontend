@@ -1,5 +1,5 @@
 import {Avatar, Button, Text} from "@geist-ui/react";
-import {subscribe} from "message-choice";
+import {subscribe} from "@fabric-dao/lib";
 import {truncate} from "../utils/truncate";
 
 const User = (props) => {
